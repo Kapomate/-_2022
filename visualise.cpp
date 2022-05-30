@@ -91,7 +91,7 @@ void visualise(std::vector<std::vector<std::string>> data, std::vector<std::stri
 		return;
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(1920, 1080, "Net-Map", NULL, NULL);
+	window = glfwCreateWindow(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), "Net-Map", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
