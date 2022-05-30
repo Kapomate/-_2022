@@ -1,7 +1,7 @@
 
 #include "visualise.h"
 
-//Dывод текста на экран
+//DГ»ГўГ®Г¤ ГІГҐГЄГ±ГІГ  Г­Г  ГЅГЄГ°Г Г­
 
 void print_string(float x, float y, const char* text, float r, float g, float b) 
 {
@@ -19,7 +19,7 @@ void print_string(float x, float y, const char* text, float r, float g, float b)
 
 //
 
-/* Перевод из полярной системы координат в декартовую*/
+/* ГЏГҐГ°ГҐГўГ®Г¤ ГЁГ§ ГЇГ®Г«ГїГ°Г­Г®Г© Г±ГЁГ±ГІГҐГ¬Г» ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ Гў Г¤ГҐГЄГ Г°ГІГ®ГўГіГѕ*/
 
 float xcoord(float r, float angle)
 {
@@ -35,9 +35,9 @@ float ycoord(float r, float angle)
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-//Отрисовка графа
+//ГЋГІГ°ГЁГ±Г®ГўГЄГ  ГЈГ°Г ГґГ 
 
-void draw(float r, float angle, float cx, float cy, std::vector<std::string> input, float bias) // Отрисовка части графа
+void draw(float r, float angle, float cx, float cy, std::vector<std::string> input, float bias) // ГЋГІГ°ГЁГ±Г®ГўГЄГ  Г·Г Г±ГІГЁ ГЈГ°Г ГґГ 
 {
 	float startangle = 0;
 	int size = input.size() - 1;
@@ -52,7 +52,7 @@ void draw(float r, float angle, float cx, float cy, std::vector<std::string> inp
 		float x = xcoord(r, startangle);
 		float y = ycoord(r, startangle);
 
-		glBegin(GL_POINTS); // Отрисовка вершин
+		glBegin(GL_POINTS); // ГЋГІГ°ГЁГ±Г®ГўГЄГ  ГўГҐГ°ГёГЁГ­
 
 		glColor3f(1, 1, 1);
 		glVertex2d(x, y);
@@ -63,11 +63,11 @@ void draw(float r, float angle, float cx, float cy, std::vector<std::string> inp
 		glPushMatrix();
 		glTranslated(x, y, 0);
 		glScaled(0.0055, -0.0055, 0);
-		print_string(0, 0, input[i + 1].c_str(), 0, 1, 0); // ОТрисовка подписей
+		print_string(0, 0, input[i + 1].c_str(), 0, 1, 0); // ГЋГ’Г°ГЁГ±Г®ГўГЄГ  ГЇГ®Г¤ГЇГЁГ±ГҐГ©
 		glPopMatrix();
 
 
-		glBegin(GL_LINES); // Отрисовка ребер
+		glBegin(GL_LINES); // ГЋГІГ°ГЁГ±Г®ГўГЄГ  Г°ГҐГЎГҐГ°
 
 		glColor3f(1, 1, 1);
 		glVertex2d(x, y);
@@ -77,7 +77,7 @@ void draw(float r, float angle, float cx, float cy, std::vector<std::string> inp
 	}
 }
 
-void visualise(std::vector<std::vector<std::string>> data, std::vector<std::string> Comutators) //Отрисовка всего графа
+void visualise(std::vector<std::vector<std::string>> data, std::vector<std::string> Comutators) //ГЋГІГ°ГЁГ±Г®ГўГЄГ  ГўГ±ГҐГЈГ® ГЈГ°Г ГґГ 
 {
 	int size = data.size();
 	float angle = 360 / size;
@@ -100,7 +100,7 @@ void visualise(std::vector<std::vector<std::string>> data, std::vector<std::stri
 
 	glfwMakeContextCurrent(window);
 
-	/* Работает в цикле, пока не закроется окно */
+	/* ГђГ ГЎГ®ГІГ ГҐГІ Гў Г¶ГЁГЄГ«ГҐ, ГЇГ®ГЄГ  Г­ГҐ Г§Г ГЄГ°Г®ГҐГІГ±Гї Г®ГЄГ­Г® */
 	while (!glfwWindowShouldClose(window))
 	{
 		
@@ -109,11 +109,11 @@ void visualise(std::vector<std::vector<std::string>> data, std::vector<std::stri
 
 		glBegin(GL_POINTS);
 
-			glVertex2d(0, 0); // Центр графа
+			glVertex2d(0, 0); // Г–ГҐГ­ГІГ° ГЈГ°Г ГґГ 
 
 		glEnd();
 
-		draw(C_RAD, angle, 0, 0, Comutators, 0); // Отрисовываем коммутаторы
+		draw(C_RAD, angle, 0, 0, Comutators, 0); // ГЋГІГ°ГЁГ±Г®ГўГ»ГўГ ГҐГ¬ ГЄГ®Г¬Г¬ГіГІГ ГІГ®Г°Г»
 
 		for (int i = 0; i < size; i++)
 		{
@@ -121,7 +121,7 @@ void visualise(std::vector<std::vector<std::string>> data, std::vector<std::stri
 			startangle = angle * i;
 			float x = xcoord(C_RAD, startangle);
 			float y = ycoord(C_RAD, startangle);
-			draw(SUB_RAD, angle, x, y, data[i], 20);  // Отрисовываем IP-адреса устройств
+			draw(SUB_RAD, 360/data[i].size(), x, y, data[i], 20);  // ГЋГІГ°ГЁГ±Г®ГўГ»ГўГ ГҐГ¬ IP-Г Г¤Г°ГҐГ±Г  ГіГ±ГІГ°Г®Г©Г±ГІГў
 			glPopMatrix();
 		}
 		startangle = 0;
