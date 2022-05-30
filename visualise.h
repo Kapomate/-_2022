@@ -20,6 +20,7 @@
 #include <vector>
 #include <string>
 #include <math.h>
+#include <WinUser.h>
 
 void print_string(float x, float y, const char* text, float r, float g, float b);
 float xcoord(float r, float angle);
